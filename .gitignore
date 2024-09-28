@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Deadlock Translate Helper
+/dist/
+/2.dumped/
+/3.output/
+/build_exe/

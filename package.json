@@ -1,0 +1,29 @@
+{
+  "name": "deadlock-translate-helper",
+  "version": "1.0.0",
+  "description": "Utility for modifying localization file of Deadlock.",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && tsc",
+    "build_exe": "npm run build && npx pkg . --targets node16-win-x64 -o ./build_exe/DeadlockTranslateHelper/DeadlockTranslateHelper && npm run copy_deps",
+    "copy_deps": "copyfiles \"./1.translated/**/*\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./config.json\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./README.md\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./README.ko.md\" \"./build_exe/DeadlockTranslateHelper/\"",
+    "start": "npm run build && node ./dist/index.js",
+    "watch": "tsc --watch",
+    "dev": "npm run watch & nodemon ./dist/index.js",
+    "test": "npm run build && node ./dist/index-test.js"
+  },
+  "bin": "dist/index.js",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs": "^0.0.1-security",
+    "ora": "^5.4.1",
+    "readline": "^1.3.0",
+    "rimraf": "^6.0.1",
+    "source-map-support": "^0.5.21"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.3",
+    "copyfiles": "^2.4.1"
+  }
+}
