@@ -7,6 +7,21 @@ import readline from 'readline';
 import deadlock_locale_helper from './utils/deadlock_locale_helper';
 import logger from './logger';
 
+const version = "v1.0.0";
+// node.js version: v18.20.4
+
+logger.log(chalk.bold.green("---------------------------------------------------------"));
+logger.log(chalk.bold.green("    ___               _ _            _       _____       "));
+logger.log(chalk.bold.green("   /   \\___  __ _  __| | | ___   ___| | __  /__   \\/\\  /\\"));
+logger.log(chalk.bold.green("  / /\\ / _ \\/ _` |/ _` | |/ _ \\ / __| |/ /    / /\\/ /_/ /"));
+logger.log(chalk.bold.green(" / /_//  __/ (_| | (_| | | (_) | (__|   <    / / / __  / "));
+logger.log(chalk.bold.green("/___,' \\___|\\__,_|\\__,_|_|\\___/ \\___|_|\\_\\___\\/  \\/ /_/  "));
+logger.log(chalk.bold.green("                                        |_____|          "));
+logger.log(chalk.bold.white(`Deadlock TranslateHelper ${version}`));
+logger.log(chalk.yellow("Contact: ahisacat@gmail.com / Discord: hisacat)"));
+logger.log(chalk.bold.green("---------------------------------------------------------"));
+logger.log(chalk.green());
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -23,20 +38,6 @@ function enterToClose(): Promise<void> {
 
 try {
     (async () => {
-        const version = "v1.0.0";
-
-        logger.log(chalk.bold.green("---------------------------------------------------------"));
-        logger.log(chalk.bold.green("    ___               _ _            _       _____       "));
-        logger.log(chalk.bold.green("   /   \\___  __ _  __| | | ___   ___| | __  /__   \\/\\  /\\"));
-        logger.log(chalk.bold.green("  / /\\ / _ \\/ _` |/ _` | |/ _ \\ / __| |/ /    / /\\/ /_/ /"));
-        logger.log(chalk.bold.green(" / /_//  __/ (_| | (_| | | (_) | (__|   <    / / / __  / "));
-        logger.log(chalk.bold.green("/___,' \\___|\\__,_|\\__,_|_|\\___/ \\___|_|\\_\\___\\/  \\/ /_/  "));
-        logger.log(chalk.bold.green("                                        |_____|          "));
-        logger.log(chalk.bold.white(`Deadlock TranslateHelper ${version}`));
-        logger.log(chalk.yellow("Contact: ahisacat@gmail.com / Discord: hisacat)"));
-        logger.log(chalk.bold.green("---------------------------------------------------------"));
-        logger.log(chalk.green());
-
         const configJsonPath = "./config.json";
         if (fs.existsSync(configJsonPath) == false) {
             logger.log(chalk.red(`Cannot find ${chalk.bold(chalk.yellow(`"${path.basename(configJsonPath)}"`))} file.`));

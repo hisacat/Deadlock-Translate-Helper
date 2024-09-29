@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
-    "build_exe": "npm run build && npx pkg . --targets node16-win-x64 -o ./build_exe/DeadlockTranslateHelper/DeadlockTranslateHelper && npm run copy_deps",
+    "build_exe": "npm run build && pkg . --targets node18-win-x64 -o ./build_exe/DeadlockTranslateHelper/DeadlockTranslateHelper && npm run copy_deps",
     "copy_deps": "copyfiles \"./1.translated/**/*\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./config.json\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./README.md\" \"./build_exe/DeadlockTranslateHelper/\" && copyfiles \"./README.ko.md\" \"./build_exe/DeadlockTranslateHelper/\"",
     "start": "npm run build && node ./dist/index.js",
     "watch": "tsc --watch",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.7.3",
-    "copyfiles": "^2.4.1"
+    "copyfiles": "^2.4.1",
+    "pkg": "^5.8.1"
   }
 }
