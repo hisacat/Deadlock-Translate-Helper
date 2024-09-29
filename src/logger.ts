@@ -2,7 +2,12 @@ import fs from "fs";
 
 const logFilePath = `./logs.txt`;
 
-const logToFile = (logFilePath: string, level: string, message?: any, ...optionalParams: any[]) => {
+function clearLogFile(logFilePath: string) {
+    fs.writeFileSync(logFilePath, '');
+};
+clearLogFile(logFilePath);
+
+function logToFile(logFilePath: string, level: string, message?: any, ...optionalParams: any[]) {
     const logTitle = `${new Date().toISOString()} [${level.toUpperCase()}]: `;
 
     let logContent = `${message}${optionalParams.length <= 0 ? `` : ` ${optionalParams.join(' ')}`}`;
