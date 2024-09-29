@@ -46,11 +46,18 @@ logger.log(chalk.green());
             process.exit();
         }
 
+        logger.log(`Read ${chalk.bold.green(`"${configJsonPath}"`)}...`);
+        const configJson = fs.readFileSync(configJsonPath).toString();
+        logger.log(configJson);
+
+        logger.log(`Parse ${chalk.bold.green(`"${configJsonPath}"`)}...`);
         const config: {
             deadlockPath: string,
             baseLanguageCode: string,
             targetLanguageCode: string
-        } = JSON.parse(fs.readFileSync(configJsonPath).toString());
+        } = JSON.parse(configJson);
+        logger.log(`Parse ${chalk.bold.green(`"${configJsonPath}"`)}... Done.`);
+        logger.log();
 
         const translatedDirPath = "./1.translated";
         const dumpedDirPath = "./2.dumped";
