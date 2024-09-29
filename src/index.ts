@@ -22,22 +22,22 @@ logger.log(chalk.yellow("Contact: ahisacat@gmail.com / Discord: hisacat)"));
 logger.log(chalk.bold.green("---------------------------------------------------------"));
 logger.log(chalk.green());
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-function enterToClose(): Promise<void> {
-    return new Promise((resolve) => {
-        rl.question('Press Enter to continue...', () => {
-            rl.close();
-            resolve();
-        });
+(async () => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
     });
-}
 
-try {
-    (async () => {
+    function enterToClose(): Promise<void> {
+        return new Promise((resolve) => {
+            rl.question('Press Enter to continue...', () => {
+                rl.close();
+                resolve();
+            });
+        });
+    }
+
+    try {
         const configJsonPath = "./config.json";
         if (fs.existsSync(configJsonPath) == false) {
             logger.log(chalk.red(`Cannot find ${chalk.bold(chalk.yellow(`"${path.basename(configJsonPath)}"`))} file.`));
@@ -147,12 +147,13 @@ try {
         logger.log(chalk.bold(`Done! check ${chalk.green(`"${outputDirPath}"`)} directory.`));
         await enterToClose();
         process.exit();
-    })();
-} catch (error) {
-    logger.error(error);
 
-    (async () => {
-        await enterToClose();
-        process.exit();
-    })();
-}
+    } catch (error) {
+        logger.error(error);
+
+        (async () => {
+            await enterToClose();
+            process.exit();
+        })();
+    }
+})();
