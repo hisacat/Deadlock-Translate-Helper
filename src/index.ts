@@ -7,7 +7,7 @@ import readline from 'readline';
 import deadlock_locale_helper from './utils/deadlock_locale_helper';
 import logger from './logger';
 
-const version = "v1.0.0";
+const version = "v1.1.0";
 // node.js version: v18.20.4
 
 logger.log(chalk.bold.green("---------------------------------------------------------"));
