@@ -83,7 +83,7 @@ function enterToClose(): Promise<void> {
         console.log();
     }
 
-    console.log(chalk.bold(`1. Copy base ${config.baseLanguageCode} txts...`));
+    console.log(chalk.bold(`2. Copy base ${config.baseLanguageCode} txts...`));
     {
         for (const englishTxtPath of baseTxtPaths) {
             const englishFilePath = getOriginFilePath(englishTxtPath);
@@ -101,7 +101,7 @@ function enterToClose(): Promise<void> {
         console.log();
     }
 
-    console.log(chalk.bold(`2. Update ${config.targetLanguageCode} values from existing keys`));
+    console.log(chalk.bold(`3. Update ${config.targetLanguageCode} values from existing keys`));
     {
         for (const englishTxtPath of baseTxtPaths) {
             const englishFilePath = getOriginFilePath(englishTxtPath);
